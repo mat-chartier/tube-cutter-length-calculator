@@ -76,50 +76,42 @@
     <label for="totalLength"
       >Longueur totale de la flèche, de la pointe au creux de l'encoche :</label
     >
-    <input
-      type="number"
-      id="totalLength"
-      placeholder="Longueur totale (en mm)"
-    />
+    <input type="number" id="totalLength" placeholder="en mm" />
     <br />
     <h3>Tailles des éléments</h3>
     <label for="arrowHeadLength">Longueur de la pointe de flèche :</label>
-    <input
-      type="number"
-      id="arrowHeadLength"
-      placeholder="Longueur de la pointe (en mm)"
-    />
+    <input type="number" id="arrowHeadLength" placeholder="en mm" />
     <br />
     <label for="totalNockLength">Longueur totale de l'encoche :</label>
-    <input
-      type="number"
-      id="totalNockLength"
-      placeholder="Longueur totale de l'encoche (en mm)"
-    />
+    <input type="number" id="totalNockLength" placeholder="en mm" />
     <br />
     <label for="nockLength">Longueur de l'encoche (jusqu'au creux) :</label>
-    <input
-      type="number"
-      id="nockLength"
-      placeholder="Longueur de l'encoche jusqu'au creux (en mm)"
-    />
+    <input type="number" id="nockLength" placeholder="en mm" />
     <br />
     <label for="pinCollarLength">Longueur de la collerette du pin :</label>
-    <input
-      type="number"
-      id="pinCollarLength"
-      placeholder="Longueur de la collerette du pin (en mm)"
-    />
+    <input type="number" id="pinCollarLength" placeholder="en mm" />
     <br />
     <label for="pinLength">Longueur totale du pin :</label>
-    <input type="number" id="pinLength" placeholder="Longueur du pin (en mm)" />
+    <input type="number" id="pinLength" placeholder="en mm" />
     <button id="calculate">Calculer</button>
+    <button id="reset">Réinitialiser</button>
     <h2>Longueur du coupe tube</h2>
     <h3>Tube nu : <span id="tubeOnly"></span></h3>
     <h3>Tube + pin + encoche : <span id="tubePinNock"></span></h3>
     <h3>Tube + pin : <span id="tubePin"></span></h3>
   </body>
   <script type="text/javascript">
+    document.getElementById("reset").addEventListener("click", function () {
+      document.getElementById("totalLength").value = "";
+      document.getElementById("arrowHeadLength").value = "";
+      document.getElementById("totalNockLength").value = "";
+      document.getElementById("nockLength").value = "";
+      document.getElementById("pinCollarLength").value = "";
+      document.getElementById("pinLength").value = "";
+      document.getElementById("tubeOnly").innerText = "";
+      document.getElementById("tubePinNock").innerText = "";
+      document.getElementById("tubePin").innerText = "";
+    });
     document.getElementById("calculate").addEventListener("click", function () {
       const totalLength = parseFloat(
         document.getElementById("totalLength").value
@@ -155,15 +147,9 @@
       const tubePinNock = tubeOnly + pinCollarLength + totalNockLength;
       const tubePin = tubeOnly + pinLength;
 
-      document.getElementById(
-        "tubeOnly"
-      ).innerText = `${tubeOnly} mm`;
-      document.getElementById(
-        "tubePinNock"
-      ).innerText = `${tubePinNock} mm`;
-      document.getElementById(
-        "tubePin"
-      ).innerText = `${tubePin} mm`;
+      document.getElementById("tubeOnly").innerText = `${tubeOnly} mm`;
+      document.getElementById("tubePinNock").innerText = `${tubePinNock} mm`;
+      document.getElementById("tubePin").innerText = `${tubePin} mm`;
     });
   </script>
 </html>
