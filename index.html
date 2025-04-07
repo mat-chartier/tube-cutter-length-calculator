@@ -5,9 +5,11 @@
   <style type="text/css">
     body {
       font-family: sans-serif;
-      margin: 20px;
+      margin: auto;
       background-color: #f4f4f4;
       color: #333;
+      max-width: 1200px;
+      padding: 20px;
     }
 
     h1,
@@ -26,7 +28,7 @@
 
     label {
       display: inline-block;
-      width: 350px;
+      width: 650px;
       margin-bottom: 5px;
       font-weight: bold;
     }
@@ -36,7 +38,7 @@
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      width: 200px;
+      width: 80px;
     }
 
     button {
@@ -62,8 +64,6 @@
     }
 
     span {
-      display: block;
-      margin-left: 370px;
       margin-bottom: 10px;
       font-weight: bold;
       color: #28a745;
@@ -71,7 +71,8 @@
   </style>
   <body>
     <h1>A quelle longueur régler le coupe tube ?</h1>
-    <h2>Paramètres</h2>
+    <h2>Paramètres (en millimètres)</h2>
+    <h3>Longueur souhaitée</h3>
     <label for="totalLength"
       >Longueur totale de la flèche, de la pointe au creux de l'encoche :</label
     >
@@ -81,6 +82,7 @@
       placeholder="Longueur totale (en mm)"
     />
     <br />
+    <h3>Tailles des éléments</h3>
     <label for="arrowHeadLength">Longueur de la pointe de flèche :</label>
     <input
       type="number"
@@ -95,11 +97,11 @@
       placeholder="Longueur totale de l'encoche (en mm)"
     />
     <br />
-    <label for="nockLength">Longueur jusqu'au creux l'encoche :</label>
+    <label for="nockLength">Longueur de l'encoche (jusqu'au creux) :</label>
     <input
       type="number"
       id="nockLength"
-      placeholder="Longueur jusqu'au creux de l'encoche (en mm)"
+      placeholder="Longueur de l'encoche jusqu'au creux (en mm)"
     />
     <br />
     <label for="pinCollarLength">Longueur de la collerette du pin :</label>
@@ -109,16 +111,13 @@
       placeholder="Longueur de la collerette du pin (en mm)"
     />
     <br />
-    <label for="pinLength">Longueur du pin :</label>
+    <label for="pinLength">Longueur totale du pin :</label>
     <input type="number" id="pinLength" placeholder="Longueur du pin (en mm)" />
     <button id="calculate">Calculer</button>
     <h2>Longueur du coupe tube</h2>
-    <h3>Tube nu</h3>
-    <span id="tubeOnly"></span>
-    <h3>Tube + pin + encoche</h3>
-    <span id="tubePinNock"></span>
-    <h3>Tube + pin</h3>
-    <span id="tubePin"></span>
+    <h3>Tube nu : <span id="tubeOnly"></span></h3>
+    <h3>Tube + pin + encoche : <span id="tubePinNock"></span></h3>
+    <h3>Tube + pin : <span id="tubePin"></span></h3>
   </body>
   <script type="text/javascript">
     document.getElementById("calculate").addEventListener("click", function () {
@@ -158,13 +157,13 @@
 
       document.getElementById(
         "tubeOnly"
-      ).innerText = `Longueur du coupe tube : ${tubeOnly} mm`;
+      ).innerText = `${tubeOnly} mm`;
       document.getElementById(
         "tubePinNock"
-      ).innerText = `Longueur du coupe tube : ${tubePinNock} mm`;
+      ).innerText = `${tubePinNock} mm`;
       document.getElementById(
         "tubePin"
-      ).innerText = `Longueur du coupe tube : ${tubePin} mm`;
+      ).innerText = `${tubePin} mm`;
     });
   </script>
 </html>
