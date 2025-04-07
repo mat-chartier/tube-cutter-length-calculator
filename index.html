@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <title>A quelle longueur régler le coupe tube ?</title>
+  </head>
+  <style type="text/css">
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+      margin-top: 30px;
+    }
+
+    label {
+      display: inline-block;
+      width: 350px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    h3 {
+      margin-top: 15px;
+      color: #555;
+      text-align: left;
+    }
+
+    span {
+      display: block;
+      margin-left: 370px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #28a745;
+    }
+  </style>
+  <body>
+    <h1>A quelle longueur régler le coupe tube ?</h1>
+    <h2>Paramètres</h2>
+    <label for="totalLength"
+      >Longueur totale de la flèche, de la pointe au creux de l'encoche :</label
+    >
+    <input
+      type="number"
+      id="totalLength"
+      placeholder="Longueur totale (en mm)"
+    />
+    <br />
+    <label for="arrowHeadLength">Longueur de la pointe de flèche :</label>
+    <input
+      type="number"
+      id="arrowHeadLength"
+      placeholder="Longueur de la pointe (en mm)"
+    />
+    <br />
+    <label for="totalNockLength">Longueur totale de l'encoche :</label>
+    <input
+      type="number"
+      id="totalNockLength"
+      placeholder="Longueur totale de l'encoche (en mm)"
+    />
+    <br />
+    <label for="nockLength">Longueur jusqu'au creux l'encoche :</label>
+    <input
+      type="number"
+      id="nockLength"
+      placeholder="Longueur jusqu'au creux de l'encoche (en mm)"
+    />
+    <br />
+    <label for="pinCollarLength">Longueur de la collerette du pin :</label>
+    <input
+      type="number"
+      id="pinCollarLength"
+      placeholder="Longueur de la collerette du pin (en mm)"
+    />
+    <br />
+    <label for="pinLength">Longueur du pin :</label>
+    <input type="number" id="pinLength" placeholder="Longueur du pin (en mm)" />
+    <button id="calculate">Calculer</button>
+    <h2>Longueur du coupe tube</h2>
+    <h3>Tube nu</h3>
+    <span id="tubeOnly"></span>
+    <h3>Tube + pin + encoche</h3>
+    <span id="tubePinNock"></span>
+    <h3>Tube + pin</h3>
+    <span id="tubePin"></span>
+  </body>
+  <script type="text/javascript">
+    document.getElementById("calculate").addEventListener("click", function () {
+      const totalLength = parseFloat(
+        document.getElementById("totalLength").value
+      );
+      const arrowHeadLength = parseFloat(
+        document.getElementById("arrowHeadLength").value
+      );
+      const totalNockLength = parseFloat(
+        document.getElementById("totalNockLength").value
+      );
+      const nockLength = parseFloat(
+        document.getElementById("nockLength").value
+      );
+      const pinCollarLength = parseFloat(
+        document.getElementById("pinCollarLength").value
+      );
+      const pinLength = parseFloat(document.getElementById("pinLength").value);
+
+      if (
+        isNaN(totalLength) ||
+        isNaN(arrowHeadLength) ||
+        isNaN(totalNockLength) ||
+        isNaN(nockLength) ||
+        isNaN(pinCollarLength) ||
+        isNaN(pinLength)
+      ) {
+        alert("Veuillez entrer des valeurs valides.");
+        return;
+      }
+
+      const tubeOnly =
+        totalLength - arrowHeadLength - nockLength - pinCollarLength;
+      const tubePinNock = tubeOnly + pinCollarLength + totalNockLength;
+      const tubePin = tubeOnly + pinLength;
+
+      document.getElementById(
+        "tubeOnly"
+      ).innerText = `Longueur du coupe tube : ${tubeOnly} mm`;
+      document.getElementById(
+        "tubePinNock"
+      ).innerText = `Longueur du coupe tube : ${tubePinNock} mm`;
+      document.getElementById(
+        "tubePin"
+      ).innerText = `Longueur du coupe tube : ${tubePin} mm`;
+    });
+  </script>
+</html>
