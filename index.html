@@ -147,9 +147,9 @@
       const tubePinNock = tubeOnly + pinCollarLength + totalNockLength;
       const tubePin = tubeOnly + pinLength;
 
-      document.getElementById("tubeOnly").innerText = `${tubeOnly} mm`;
-      document.getElementById("tubePinNock").innerText = `${tubePinNock} mm`;
-      document.getElementById("tubePin").innerText = `${tubePin} mm`;
+      document.getElementById("tubeOnly").innerText = `${tubeOnly} mm (${(tubeOnly / 25.4).toFixed(2)} in)`; 
+      document.getElementById("tubePinNock").innerText = `${tubePinNock} mm (${(tubePinNock / 25.4).toFixed(2)} in)`;
+      document.getElementById("tubePin").innerText = `${tubePin} mm (${(tubePin / 25.4).toFixed(2)} in)`;
     });
   </script>
 </html>
