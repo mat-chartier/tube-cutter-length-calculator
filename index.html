@@ -68,6 +68,24 @@
       font-weight: bold;
       color: #28a745;
     }
+
+ /* Retina */
+ @media (-webkit-min-device-pixel-ratio: 1.1) {
+      body {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 2rem;
+        width: 15rem;
+        display: block;
+      }
+
+      input[type="number"] {
+        width: 10rem;
+        font-size: 2rem;
+      }
+    }    
   </style>
   <body>
     <h1>A quelle longueur régler le coupe tube ?</h1>
@@ -147,9 +165,15 @@
       const tubePinNock = tubeOnly + pinCollarLength + totalNockLength;
       const tubePin = tubeOnly + pinLength;
 
-      document.getElementById("tubeOnly").innerText = `${tubeOnly} mm (${(tubeOnly / 25.4).toFixed(2)} in)`; 
-      document.getElementById("tubePinNock").innerText = `${tubePinNock} mm (${(tubePinNock / 25.4).toFixed(2)} in)`;
-      document.getElementById("tubePin").innerText = `${tubePin} mm (${(tubePin / 25.4).toFixed(2)} in)`;
+      document.getElementById("tubeOnly").innerText = `${tubeOnly} mm (${(
+        tubeOnly / 25.4
+      ).toFixed(2)} in)`;
+      document.getElementById("tubePinNock").innerText = `${tubePinNock} mm (${(
+        tubePinNock / 25.4
+      ).toFixed(2)} in)`;
+      document.getElementById("tubePin").innerText = `${tubePin} mm (${(
+        tubePin / 25.4
+      ).toFixed(2)} in)`;
     });
   </script>
 </html>
